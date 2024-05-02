@@ -1,0 +1,52 @@
+#这是一个非常重要的文件，设置了git提交时的过滤规则
+# Compiled class files
+*.class
+
+# Package files (if using Eclipse)
+*.jar
+*.war
+*.ear
+
+# Compiled output directories (examples for different build tools)
+target/
+out/
+build/
+.gradle/
+
+# IntelliJ IDEA
+*.iml
+.idea/
+*.ipr
+*.iws
+
+#所有的日志和锁文件不提交
+*.log
+*.lock
+
+#STS
+.apt_generated
+.factorypath
+.springBeans
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+#临时文件
+tmp/
+#rebel
+*rebel.xml*
+
+# NetBeans
+nbproject/private/
+build-impl.xml
+nb-configuration.xml
+
+# Maven
+mvnw
+mvnw.cmd
+.mvn/
+
+
