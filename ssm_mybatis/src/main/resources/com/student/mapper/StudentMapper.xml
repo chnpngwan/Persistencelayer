@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.student.mapper.StudentMapper">
+    <resultMap id="BaseResultMap" type="com.student.entity.Student">
+        <id column="student_id" jdbcType="INTEGER" property="studentId"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password_hash" jdbcType="VARCHAR" property="passwordHash"/>
+        <result column="first_name" jdbcType="VARCHAR" property="firstName"/>
+        <result column="last_name" jdbcType="VARCHAR" property="lastName"/>
+        <result column="date_of_birth" jdbcType="DATE" property="dateOfBirth"/>
+        <result column="gender" jdbcType="CHAR" property="gender"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber"/>
+        <result column="guardian_name" jdbcType="VARCHAR" property="guardianName"/>
+        <result column="guardian_phone_number" jdbcType="VARCHAR" property="guardianPhoneNumber"/>
+        <result column="admission_date" jdbcType="DATE" property="admissionDate"/>
+        <result column="graduation_date" jdbcType="DATE" property="graduationDate"/>
+        <result column="department" jdbcType="VARCHAR" property="department"/>
+        <result column="major" jdbcType="VARCHAR" property="major"/>
+        <result column="current_year" jdbcType="INTEGER" property="currentYear"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from student
+        where student_id = #{studentId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.student.entity.Student">
+        insert into student (student_id, username, password_hash,
+                             first_name, last_name, date_of_birth,
+                             gender, address, email,
+                             phone_number, guardian_name, guardian_phone_number,
+                             admission_date, graduation_date, department,
+                             major, current_year)
+        values (#{studentId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{passwordHash,jdbcType=VARCHAR},
+                #{firstName,jdbcType=VARCHAR}, #{lastName,jdbcType=VARCHAR}, #{dateOfBirth,jdbcType=DATE},
+                #{gender,jdbcType=CHAR}, #{address,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+                #{phoneNumber,jdbcType=VARCHAR}, #{guardianName,jdbcType=VARCHAR},
+                #{guardianPhoneNumber,jdbcType=VARCHAR},
+                #{admissionDate,jdbcType=DATE}, #{graduationDate,jdbcType=DATE}, #{department,jdbcType=VARCHAR},
+                #{major,jdbcType=VARCHAR}, #{currentYear,jdbcType=INTEGER})
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="com.student.entity.Student">
+        update student
+        set username              = #{username,jdbcType=VARCHAR},
+            password_hash         = #{passwordHash,jdbcType=VARCHAR},
+            first_name            = #{firstName,jdbcType=VARCHAR},
+            last_name             = #{lastName,jdbcType=VARCHAR},
+            date_of_birth         = #{dateOfBirth,jdbcType=DATE},
+            gender                = #{gender,jdbcType=CHAR},
+            address               = #{address,jdbcType=VARCHAR},
+            email                 = #{email,jdbcType=VARCHAR},
+            phone_number          = #{phoneNumber,jdbcType=VARCHAR},
+            guardian_name         = #{guardianName,jdbcType=VARCHAR},
+            guardian_phone_number = #{guardianPhoneNumber,jdbcType=VARCHAR},
+            admission_date        = #{admissionDate,jdbcType=DATE},
+            graduation_date       = #{graduationDate,jdbcType=DATE},
+            department            = #{department,jdbcType=VARCHAR},
+            major                 = #{major,jdbcType=VARCHAR},
+            current_year          = #{currentYear,jdbcType=INTEGER}
+        where student_id = #{studentId,jdbcType=INTEGER}
+    </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select student_id,
+               username,
+               password_hash,
+               first_name,
+               last_name,
+               date_of_birth,
+               gender,
+               address,
+               email,
+               phone_number,
+               guardian_name,
+               guardian_phone_number,
+               admission_date,
+               graduation_date,
+               department,
+               major,
+               current_year
+        from student
+        where student_id = #{studentId,jdbcType=INTEGER}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select student_id,
+               username,
+               password_hash,
+               first_name,
+               last_name,
+               date_of_birth,
+               gender,
+               address,
+               email,
+               phone_number,
+               guardian_name,
+               guardian_phone_number,
+               admission_date,
+               graduation_date,
+               department,
+               major,
+               current_year
+        from student
+    </select>
+    <select id="selectByUsername" resultMap="BaseResultMap">
+        select student_id,
+               username,
+               password_hash,
+               first_name,
+               last_name,
+               date_of_birth,
+               gender,
+               address,
+               email,
+               phone_number,
+               guardian_name,
+               guardian_phone_number,
+               admission_date,
+               graduation_date,
+               department,
+               major,
+               current_year
+        from student
+        where username = #{username};
+    </select>
+</mapper>
