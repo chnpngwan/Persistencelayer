@@ -37,7 +37,7 @@
         <!--        sqlSessionFactoryBeanName：为了将我们的sqlSessionFactory注入给它这个类-->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
         <!--        basePackage：这个属性就是映射接口的包，这个包里面的所有的接口扫描到-->
-        <property name="basePackage" value="com.thecty.mapper"/>
+        <property name="basePackage" value="com.student.mapper"/>
     </bean>
     <!-- 开启注解事务管理 -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
