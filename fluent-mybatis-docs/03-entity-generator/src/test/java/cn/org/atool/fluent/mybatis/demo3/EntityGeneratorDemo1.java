@@ -9,7 +9,7 @@ import org.test4j.module.database.proxy.DataSourceCreator;
 import org.test4j.module.database.proxy.DataSourceCreatorFactory;
 
 public class EntityGeneratorDemo1 {
-    public static final String url = "jdbc:mysql://localhost:3306/fluent_mybatis?useUnicode=true&characterEncoding=utf8";
+    public static final String url = "jdbc:mysql://localhost:3307/db_fluent_mybatis?useUnicode=true&characterEncoding=utf8";
 
     /**
      * 使用 test/resource/init.sql文件自动初始化测试数据库
@@ -26,7 +26,7 @@ public class EntityGeneratorDemo1 {
 
     @Tables(
         // 设置数据库连接信息
-        url = url, username = "root", password = "password",
+        url = url, username = "root", password = "123456",
         // 设置entity类生成src目录, 相对于 user.dir
         srcDir = "src/main/java",
         // 设置entity类的package值

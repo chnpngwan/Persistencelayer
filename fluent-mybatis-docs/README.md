@@ -2,10 +2,6 @@
 - **No XML, No Mapper, No If else, No String魔法值编码**
 - **只需Entity就实现强大的FluentAPI: 支持分页, 嵌套查询, AND OR组合, 聚合函数...**
 
-## QQ交流群
-QQ交流群: 933791730
-![-w230](00-docs/qq2.jpeg)
-
 ## Fluent-Mybatis源码
 [Gitee](https://gitee.com/fluent-mybatis/fluent-mybatis)
 

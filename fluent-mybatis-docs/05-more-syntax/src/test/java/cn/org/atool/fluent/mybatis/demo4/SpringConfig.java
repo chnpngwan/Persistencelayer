@@ -19,9 +19,9 @@ public class SpringConfig {
     public DataSource newDataSource() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/fluent_mybatis?useUnicode=true&characterEncoding=utf8");
+        dataSource.setUrl("jdbc:mysql://localhost:3307/db_fluent_mybatis?useUnicode=true&characterEncoding=utf8");
         dataSource.setUsername("root");
-        dataSource.setPassword("password");
+        dataSource.setPassword("123456");
         return dataSource;
     }
 
