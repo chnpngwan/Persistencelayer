@@ -31,7 +31,7 @@
         <!-- 生成Mapper接口的包名和位置 -->
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.student.mapper" targetProject="D:\Github\Persistencelayer\ssm_mybatis\src\main\java\"/>
 
-        <!-- 要生成对应表配置 -->
+        <!-- tableName: 对应的是数据库表名，domainObjectName： 是实体类的名字，可以自定义 -->
         <table tableName="student" domainObjectName="Student" >
             <!-- 自增主键列 -->
             <generatedKey column="id" sqlStatement="MYSQL" identity="true"/>

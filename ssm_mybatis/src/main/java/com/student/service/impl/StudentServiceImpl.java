@@ -53,4 +53,21 @@ public class StudentServiceImpl implements StudentService {
     public Student selectByUsername(String username) {
         return studentMapper.selectByUsername(username);
     }
+
+    @Override
+    public List<Student> queryByUserName(String username) {
+        return studentMapper.queryByUserName(username);
+    }
+
+    @Override
+    public List<Student> getStudentListByClassIds_foreach_array(List<Integer> currentYearIds) {
+        return studentMapper.getStudentListByClassIds_foreach_array(currentYearIds);
+    }
+
+    @Override
+    public List<Student> getStudentListByClassIds_foreach_list(List<String> usernameList) {
+        return studentMapper.getStudentListByClassIds_foreach_list(usernameList);
+    }
+
+
 }

@@ -24,4 +24,10 @@ public interface StudentService {
     int updateByPrimaryKey(Student record);
 
     Student selectByUsername(String username);
+
+    List<Student> queryByUserName(String username);
+
+    List<Student> getStudentListByClassIds_foreach_array(List<Integer> currentYearIds);
+
+    List<Student> getStudentListByClassIds_foreach_list(List<String> usernameList);
 }

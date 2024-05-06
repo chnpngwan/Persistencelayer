@@ -122,4 +122,79 @@
         from student
         where username = #{username};
     </select>
+
+    <select id="queryByUserName" resultMap="BaseResultMap">
+        SELECT
+        student_id,
+        username,
+        password_hash,
+        first_name,
+        last_name,
+        date_of_birth,
+        gender,
+        address,
+        email,
+        phone_number,
+        guardian_name,
+        guardian_phone_number,
+        admission_date,
+        graduation_date,
+        department,
+        major,
+        current_year from student
+        <where>
+            <if test="username!=null and username!=''">
+                username like concat('%',#{username},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="getStudentListByClassIds_foreach_array" resultMap="BaseResultMap">
+        SELECT
+            student_id,
+            username,
+            password_hash,
+            first_name,
+            last_name,
+            date_of_birth,
+            gender,
+            address,
+            email,
+            phone_number,
+            guardian_name,
+            guardian_phone_number,
+            admission_date,
+            graduation_date,
+            department,
+            major,
+            current_year from student
+        WHERE current_year IN
+        <foreach collection="array" item="currentYearIds"  open="(" separator="," close=")">
+            #{currentYear}
+        </foreach>
+    </select>
+    <select id="getStudentListByClassIds_foreach_list" resultMap="BaseResultMap">
+        SELECT
+        student_id,
+        username,
+        password_hash,
+        first_name,
+        last_name,
+        date_of_birth,
+        gender,
+        address,
+        email,
+        phone_number,
+        guardian_name,
+        guardian_phone_number,
+        admission_date,
+        graduation_date,
+        department,
+        major,
+        current_year from student
+        WHERE username IN
+        <foreach collection="list" item="usernameList"  open="(" separator="," close=")">
+            #{username}
+        </foreach>
+    </select>
 </mapper>

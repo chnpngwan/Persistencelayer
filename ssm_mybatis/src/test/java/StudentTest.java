@@ -1,4 +1,5 @@
 import com.student.entity.Student;
+import com.student.mapper.StudentMapper;
 import com.student.service.StudentService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,8 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * ProjectName:  Persistencelayer
@@ -149,5 +149,41 @@ public class StudentTest {
         StudentService studentService = applicationContext.getBean("studentService", StudentService.class);
         Student studentByUsername = studentService.selectByUsername("student10");
         System.out.println(studentByUsername);
+    }
+
+    // 根据username进行模糊查询
+    @Test
+    public void testQueryByUserName() {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/application.xml");
+        StudentService studentService = applicationContext.getBean("studentService", StudentService.class);
+        List<Student> studentQueryByUserName = studentService.queryByUserName("student");
+        for (Student student: studentQueryByUserName) {
+            System.out.println(student);
+        }
+    }
+
+    @Test
+    public void test7_foreach() {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/application.xml");
+        StudentService studentService = applicationContext.getBean("studentService", StudentService.class);
+        // 准备测试数据
+        List<Integer> currentYearIds = Arrays.asList(2, 3);
+        List<Student> studentList = studentService.getStudentListByClassIds_foreach_array(currentYearIds);
+        for (Student student : studentList) {
+            System.out.println(student.toString());
+        }
+    }
+
+    @Test
+    public void test7_2_foreach() {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/application.xml");
+        StudentService studentService = applicationContext.getBean("studentService", StudentService.class);
+        ArrayList<String> usernameList = new ArrayList<String>();
+        usernameList.add("student1");
+        usernameList.add("student10");
+        List<Student> list = this.studentService.getStudentListByClassIds_foreach_list(usernameList);
+        for (Student e : list) {
+            System.out.println(e.toString());
+        }
     }
 }

@@ -19,7 +19,7 @@
         <mysql.version>8.0.30</mysql.version>
         <spring.version>6.1.4</spring.version>
         <druid.version>1.2.14</druid.version>
-        <junit-version>4.11</junit-version>
+        <junit-version>4.13.1</junit-version>
         <servlet-api.version>6.0.0</servlet-api.version>
         <jackson-databind.version>2.9.8</jackson-databind.version>
         <lombok.version>1.18.8</lombok.version>
