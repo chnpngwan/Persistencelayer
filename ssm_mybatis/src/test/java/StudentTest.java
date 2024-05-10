@@ -1,5 +1,4 @@
 import com.student.entity.Student;
-import com.student.mapper.StudentMapper;
 import com.student.service.StudentService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
