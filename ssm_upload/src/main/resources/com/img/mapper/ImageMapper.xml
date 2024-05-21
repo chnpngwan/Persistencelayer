@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.img.mapper.ImageMapper">
+  <resultMap id="BaseResultMap" type="com.img.entity.Image">
+    <id column="id" jdbcType="VARBINARY" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="imgPath" jdbcType="VARCHAR" property="imgpath" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="byte[]">
+    delete from tb_image
+    where id = #{id,jdbcType=VARBINARY}
+  </delete>
+  <insert id="insert" parameterType="com.img.entity.Image">
+    <selectKey keyProperty="id" order="AFTER" resultType="byte[]">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into tb_image (name, imgPath)
+    values (#{name,jdbcType=VARCHAR}, #{imgpath,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.img.entity.Image">
+    update tb_image
+    set name = #{name,jdbcType=VARCHAR},
+      imgPath = #{imgpath,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARBINARY}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="byte[]" resultMap="BaseResultMap">
+    select id, name, imgPath
+    from tb_image
+    where id = #{id,jdbcType=VARBINARY}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, imgPath
+    from tb_image
+  </select>
+
+    <!-- 查询所有图片 -->
+    <insert id="save" parameterType="com.img.entity.Image">
+      insert into tb_image(imgPath) values(#{imgPath})
+    </insert>
+</mapper>

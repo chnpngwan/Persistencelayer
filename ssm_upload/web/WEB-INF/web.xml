@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+         https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <servlet>
+        <servlet-name>SpringMVC</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!--用该方式可以选定配置文件的位置在resources下，而不是WEB-INF目录下-->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring/springmvc.xml</param-value>
+        </init-param>
+        <!--设置在服务器启动时加载配置文件，防止在第一次访问时加载会很慢-->
+        <load-on-startup>1</load-on-startup>
+
+        <!--MultipartFile核心配置 -->
+        <multipart-config>
+            <!--上传文件最大多少 1024*1024*10-->
+            <max-file-size>10485760</max-file-size>
+            <!--最大请求大小 1024*1024*10-->
+            <max-request-size>10485760</max-request-size>
+            <!--多大以上的文件可以上传，可以限定文件最小的大小，一般不限制-->
+            <file-size-threshold>0</file-size-threshold>
+        </multipart-config>
+
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SpringMVC</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+</web-app>
