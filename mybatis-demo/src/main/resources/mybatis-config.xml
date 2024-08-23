@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+<!--
+MyBatis 的配置文件包含了会深深影响 MyBatis 行为的设置和属性信息。 配置文档的顶层结构如下：
+configuration（配置）
+        properties（属性）
+        settings（设置）
+        typeAliases（类型别名）
+        typeHandlers（类型处理器）
+        objectFactory（对象工厂）
+        plugins（插件）
+        environments（环境配置）
+             environment（环境变量）
+                transactionManager（事务管理器）
+                dataSource（数据源）
+        databaseIdProvider（数据库厂商标识）
+        mappers（映射器）
+
+官网：https://mybatis.org/mybatis-3/zh/configuration.html
+-->
+
+
+<!-- 扫描包别名   -->
+    <typeAliases>
+        <package name="org.example.pojo"/>
+    </typeAliases>
+    
+    <!--
+    environments：配置数据库连接环境信息。可以配置多个environment，通过default属性切换不同的environment
+    -->
+    <!--    指定默认的环境名称-->
+    <environments default="development">
+        <!--        指定当前环境的名称-->
+        <environment id="development">
+            <!--            指定事务管理类型是JDBC-->
+            <transactionManager type="JDBC"/>
+            <!--            指定当前数据源类型是连接池-->
+            <dataSource type="POOLED">
+                <!--数据库连接信息-->
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql:///mybatis?useSSL=false"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+
+<!--        <environment id="test">-->
+<!--            <transactionManager type="JDBC"/>-->
+<!--            <dataSource type="POOLED">-->
+<!--                &lt;!&ndash;数据库连接信息&ndash;&gt;-->
+<!--                <property name="driver" value="com.mysql.jdbc.Driver"/>-->
+<!--                <property name="url" value="jdbc:mysql:///mybatis?useSSL=false"/>-->
+<!--                <property name="username" value="root"/>-->
+<!--                <property name="password" value="1234"/>-->
+<!--            </dataSource>-->
+<!--        </environment>-->
+    </environments>
+    <mappers>
+        <!--加载sql映射文件-->
+<!--        <mapper resource="org/example/mapper/UserMapper.xml"/>-->
+
+        <!--Mapper代理方式-->
+        <package name="org.example.mapper"/>
+
+    </mappers>
+
+
+</configuration>
